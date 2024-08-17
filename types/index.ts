@@ -48,7 +48,6 @@ export type DeleteEventParams = {
 
 export type GetAllEventsParams = {
   query: string;
-  category: string;
   limit: number;
   page: number;
 };
@@ -60,7 +59,6 @@ export type GetEventsByUserParams = {
 };
 
 export type GetRelatedEventsByCategoryParams = {
-  categoryId: string;
   eventId: string;
   limit?: number;
   page: number | string;

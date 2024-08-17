@@ -17,10 +17,10 @@ export interface IEvent extends Document {
 // Define the Event schema
 const EventSchema = new Schema({
   title: { type: String, required: true },
-  description: { type: String },
-  venue: { type: String },
+  description: { type: String, required: true },
+  venue: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
-  imageUrl: { type: String, required: true },
+  imageUrl: { type: String },
   startDateTime: { type: Date, default: Date.now },
   endDateTime: { type: Date, default: Date.now },
   url: { type: String },
