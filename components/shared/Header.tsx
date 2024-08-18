@@ -9,7 +9,6 @@ export default function Header() {
         src={"/assets/images/CCLogo.png"}
         width={60}
         height={60}
-        className="cursor-pointer"
       ></Image>
       <div className="">
         <ul className="flex justify-center gap-12 text-lg font-medium">

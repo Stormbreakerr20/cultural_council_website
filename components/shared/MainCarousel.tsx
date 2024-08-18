@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -12,26 +12,26 @@ import Image from "next/image";
 
 export function MainCarousel() {
   return (
-    <Carousel className="w-full sm:max-w-lg max-w-64  max mt-5">
+    <Carousel className="w-full shadow-2xl">
       <CarouselContent>
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem key={index}>
             <div className="w-full flex gap-5">
-              <Card className="p-0 relative w-[520px] h-[300px] rounded-lg">
+              <Card className="p-0 relative bg-transparent w-full aspect-video rounded-2xl border-0">
                 <Image
-                  src="/assets/images/bg.jpg"
+                  src="/assets/images/sample.png"
                   alt=""
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-lg"
+                  className="rounded-2xl"
                 />
               </Card>
             </div>
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious className="hover:bg-transparent hover:text-neutral-400 hover:border-neutral-400" />
+      <CarouselNext className="hover:bg-transparent hover:text-neutral-400 hover:border-neutral-400" />
     </Carousel>
   );
 }

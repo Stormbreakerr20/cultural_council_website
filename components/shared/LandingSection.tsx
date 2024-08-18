@@ -1,19 +1,19 @@
 import { MainCarousel } from "./MainCarousel";
+
 function LandingSection() {
   return (
     <>
-      <div className="flex h-full w-full justify-center items-center">
-        <div className="flex flex-col items-center text-white pt-12">
-          <div>This is the Cultural Society, IIT Mandi</div>
-          <h1 className="text-4xl max-sm:text-3xl font-medium">
-            Where raw talent meets
-          </h1>
-          <h1 className="text-4xl max-sm:text-3xl mt-2 font-medium">
-            global exposure
-          </h1>
-          <div>
-            <MainCarousel />
+      <div className="flex flex-col w-full justify-center items-center mt-24 px-5 md:px-12">
+        <div className="flex flex-col items-center">
+          <div className="text-xl font-medium text-neutral-100/[0.7] text-center">
+            This is the Cultural Society, IIT Mandi
           </div>
+          <h1 className="text-6xl max-sm:text-3xl max-w-screen-md font-semibold text-center leading-tight">
+            Where raw talent meets global exposure
+          </h1>
+        </div>
+        <div className="mt-24 px-12 w-full max-w-screen-lg">
+          <MainCarousel />
         </div>
       </div>
     </>
