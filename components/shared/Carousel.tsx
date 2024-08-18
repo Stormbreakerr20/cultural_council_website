@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./Carousel.css";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
+import Image from "next/image";
 
 const images = [
   "/assets/images/artgeeks.png",
@@ -94,7 +95,9 @@ const Carousel: React.FC = () => {
               visibility: getVisibility(index),
             }}
           >
-            <img
+            <Image
+              width={100}
+              height={100}
               src={image}
               onClick={() => setActiveIndex(index)}
               alt={`Carousel ${index}`}

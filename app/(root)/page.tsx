@@ -6,5 +6,9 @@ import { useEffect } from "react";
 import Carousel from "@/components/shared/Carousel";
 import LandingSection from "@/components/shared/LandingSection";
 export default function Home() {
-  return <></>;
+  return (
+    <>
+      <LandingSection />
+    </>
+  );
 }
