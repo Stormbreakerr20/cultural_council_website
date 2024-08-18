@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 body {
-  background: url("/assets/images/bg.jpg") no-repeat center center fixed;
+  background: url("/assets/images/bg.svg") no-repeat top fixed;
   background-size: cover;
 }
 
@@ -78,7 +78,7 @@ body {
 }
 
 body {
-  font-family: var(--font-poppins)
+  font-family: var(--font-poppins);
 }
 
 .filter-grey {
@@ -280,7 +280,7 @@ body {
 }
 
 #bg > #image {
-  background-image: url(../public/assets/images/bg.jpg);
+  background-image: url(../public/assets/images/bg.svg);
   background-blend-mode: multiply;
   background-size: cover;
   background-repeat: no-repeat;
