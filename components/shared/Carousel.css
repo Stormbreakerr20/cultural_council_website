@@ -1,5 +1,5 @@
 .carousel {
-    background: linear-gradient(-12deg, #18181b, rgb(52, 41, 24));
+    background: linear-gradient(-15deg, #18181b, #ec489926);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,4 +25,3 @@
     object-fit: cover;
     transition: transform 0.5s ease-in-out;
   }
-  

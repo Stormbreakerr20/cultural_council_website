@@ -1,8 +1,10 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Carousel.css";
-import { FaRegArrowAltCircleLeft } from "react-icons/fa";
-import { FaRegArrowAltCircleRight } from "react-icons/fa";
+import {
+  FaRegArrowAltCircleLeft,
+  FaRegArrowAltCircleRight,
+} from "react-icons/fa";
 import Image from "next/image";
 
 const images = [
@@ -26,7 +28,7 @@ const Carousel: React.FC = () => {
 
   const handlePrev = () => {
     setActiveIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1,
     );
   };
 
@@ -44,14 +46,14 @@ const Carousel: React.FC = () => {
     // Adjust the translate value based on screen width
     let translateValue = 0;
     if (screenWidth >= 1200) {
-      translateValue = diff * 480;
+      translateValue = diff * 500;
     } else if (screenWidth >= 900) {
-      translateValue = diff * 400;
+      translateValue = diff * 450;
     } else if (screenWidth >= 765) {
-      translateValue = diff * 340;
-    } else translateValue = diff * 250;
+      translateValue = diff * 400;
+    } else translateValue = diff * 300;
     return `translateX(${translateValue}px) scale(${
-      index === activeIndex ? 1.3 : 0.8
+      index === activeIndex ? 1.5 : 0.8
     })`;
   };
 
@@ -64,15 +66,15 @@ const Carousel: React.FC = () => {
   };
 
   return (
-    <div className="carousel h-[100%] w-full">
-      <div className="absolute top-5 left-10 text-[#f5f5f5] sm:w-[400px] max-sm:left-5 max-sm:w-[300px] ">
-        <h1 className="text-3xl sm:text-5xl font-semibold pb-2">MUSIC CLUB</h1>
+    <div className="carousel h-screen w-full relative">
+      <div className="absolute top-40 left-24 text-neutral-100 sm:w-[500px] max-sm:left-12 max-sm:top-36 max-sm:w-[300px] ">
+        <h1 className="text-4xl sm:text-5xl font-semibold pb-2">Music Club</h1>
         <p className="text-sm sm:text-base">
           This is just random text that you don’t need to read but is there just
           for show because the designer liked putting random paragraphs
           everywhere that make no sense at all. Hope you enjoy the show.
         </p>
-        <div className="flex my-2 gap-4 sm:gap-8">
+        <div className="flex my-2 gap-2.5 sm:gap-5 text-neutral-100/[0.5]">
           <FaRegArrowAltCircleLeft
             size={30}
             onClick={handlePrev}
@@ -85,7 +87,7 @@ const Carousel: React.FC = () => {
           />
         </div>
       </div>
-      <div className="carousel-images max-sm:mt-5 -rotate-12">
+      <div className="carousel-images max-sm:mt-5 -rotate-[15deg] translate-y-24">
         {images.map((image, index) => (
           <div
             key={index}
@@ -101,7 +103,7 @@ const Carousel: React.FC = () => {
               src={image}
               onClick={() => setActiveIndex(index)}
               alt={`Carousel ${index}`}
-              className={`m-2 xl:h-72 xl:w-72 md:h-56 md:w-56 sm:h-44 sm:w-44 shadow-lg lg:h-64 lg:w-64 xs:h-44 xs:w-44 h-56 w-56`}
+              className={`m-2 xl:h-72 xl:w-72 md:h-56 md:w-56 sm:h-44 sm:w-44 shadow-2xl lg:h-64 lg:w-64 xs:h-44 xs:w-44 h-56 w-56`}
             />
           </div>
         ))}

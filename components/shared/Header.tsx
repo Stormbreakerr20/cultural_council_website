@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <nav className="flex justify-between items-center text-white px-24 max-sm:px-8 py-5">
+    <nav className="absolute top-0 w-full z-50 flex justify-between items-center text-white px-24 max-sm:px-8 py-5">
       <Image
         alt="CCLogo"
         src={"/assets/images/CCLogo.png"}
