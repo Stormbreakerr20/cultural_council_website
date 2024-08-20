@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Header() {
   return (
     <nav className="absolute top-0 w-full z-50 flex justify-between items-center text-white px-12 max-sm:px-8 py-5">
-      <Link href={'/'}>
+      <Link href={"/"}>
         <Image
           alt="CCLogo"
           src={"/assets/images/CCLogo.png"}
@@ -24,7 +24,7 @@ export default function Header() {
               Clubs
             </li>
           </Link>
-          <Link href={"/"}>
+          <Link href={"/events"}>
             <li className="cursor-pointer transition hover:text-[#AC51D2]">
               Events
             </li>

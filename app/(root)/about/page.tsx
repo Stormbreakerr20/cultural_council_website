@@ -1,9 +1,10 @@
 import React from "react";
 import Wheel from "@/components/shared/Wheel";
+
 const page = () => {
   return (
     <div className="flex justify-start lg:items-center max-lg:mt-24 h-full">
-      <div className="w-full lg:w-1/2 ml-12 p-4 lg:p-0 max-md:ml-0 max-md:text-center">
+      <div className="w-full lg:w-1/2 ml-12 sm:ml-24 p-4 lg:p-0 max-md:ml-0 max-md:text-center">
         <div className="mb-5">
           <p className="text-lg lg:text-xl">
             This is the Cultural Society, IIT Mandi
