@@ -67,7 +67,7 @@ const Carousel: React.FC = () => {
 
   return (
     <div className="carousel h-screen w-full relative">
-      <div className="absolute top-40 left-24 text-neutral-100 sm:w-[500px] max-sm:left-12 max-sm:top-36 max-sm:w-[300px] ">
+      <div className="absolute top-28 left-12 text-neutral-100 sm:w-[500px] max-sm:left-12 max-sm:top-28 max-sm:w-[300px] ">
         <h1 className="text-4xl sm:text-5xl font-semibold pb-2">Music Club</h1>
         <p className="text-sm sm:text-base">
           This is just random text that you don’t need to read but is there just
@@ -103,7 +103,7 @@ const Carousel: React.FC = () => {
               src={image}
               onClick={() => setActiveIndex(index)}
               alt={`Carousel ${index}`}
-              className={`m-2 xl:h-72 xl:w-72 md:h-56 md:w-56 sm:h-44 sm:w-44 shadow-2xl lg:h-64 lg:w-64 xs:h-44 xs:w-44 h-56 w-56`}
+              className={`m-2 xl:h-60 xl:w-60 md:h-56 md:w-56 sm:h-44 sm:w-44 shadow-2xl lg:h-64 lg:w-64 xs:h-44 xs:w-44 h-56 w-56`}
             />
           </div>
         ))}
