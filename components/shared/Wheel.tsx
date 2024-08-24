@@ -42,7 +42,7 @@ function App() {
           >
             <div className="image-parent">
               <img
-                className="pointer-events-none h-[300px] rounded-full"
+                className="pointer-events-none h-[150px] rounded-full"
                 src={`/assets/images/${tech}`}
                 alt={tech}
               />
