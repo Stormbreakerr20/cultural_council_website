@@ -10,8 +10,17 @@ function App() {
     "designauts.jpeg",
     "designauts.jpeg",
   ];
+
   return (
-    <div className="">
+    <div className="relative h-screen w-screen">
+      {/* Circular Line */}
+      <div className="absolute  mr-40 mb-24 inset-0 flex items-center justify-center">
+        <div className="relative">
+          <div className="w-[800px] h-[850px] border-4  border-white rounded-full absolute"></div>
+        </div>
+      </div>
+
+      {/* Rotating Circles */}
       {ferrisOfTechs.map((tech, index: number) => {
         return (
           <motion.div
@@ -49,7 +58,7 @@ function App() {
             </div>
           </motion.div>
         );
-      }, [])}
+      })}
     </div>
   );
 }

@@ -50,10 +50,10 @@ export default function Header() {
               Events
             </li>
           </Link>
-          <Link href={"/"}>
+          <Link href={"/contact"}>
             <li
               className={`cursor-pointer transition hover:text-[#AC51D2] ${
-                currentPage === "/" ? "text-[#AC51D2]" : ""
+                currentPage === "/contact" ? "text-[#AC51D2]" : ""
               }`}
             >
               Contact
