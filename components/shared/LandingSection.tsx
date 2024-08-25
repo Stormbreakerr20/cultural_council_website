@@ -1,3 +1,4 @@
+import TimelineMain from "./Home_Timeline";
 import { MainCarousel } from "./MainCarousel";
 
 function LandingSection() {
@@ -14,6 +15,7 @@ function LandingSection() {
         </div>
         <div className="mt-24 px-12 w-full max-w-screen-lg">
           <MainCarousel />
+          <TimelineMain />
         </div>
       </div>
     </>
