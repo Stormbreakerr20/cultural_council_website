@@ -21,8 +21,8 @@ const EventSchema = new Schema({
   venue: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
   imageUrl: { type: String },
-  startDateTime: { type: Date, default: Date.now },
-  endDateTime: { type: Date, default: Date.now },
+  startDateTime: { type: Date, default: Date.now, required: true },
+  endDateTime: { type: Date, default: Date.now, required: true },
   url: { type: String },
   organizer: { type: Schema.Types.ObjectId, ref: "User" },
 });

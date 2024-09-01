@@ -92,3 +92,12 @@ export const handleError = (error: unknown) => {
   console.error(error);
   throw new Error(typeof error === "string" ? error : JSON.stringify(error));
 };
+
+export const ClubsLogo = {
+  artgeeks: "/assets/images/artgeeks.png",
+  pmc: "/assets/images/pmc.jpg",
+  designauts: "/assets/images/designauts.jpeg",
+  gusthak: "/assets/images/gusthak.jpg",
+  spic: "/assets/images/spic.jpg",
+  music: "/assets/images/music.jpg",
+};

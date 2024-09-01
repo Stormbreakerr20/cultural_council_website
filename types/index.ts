@@ -25,7 +25,6 @@ export type CreateEventParams = {
   };
   path: string;
 };
-
 export type UpdateEventParams = {
   userId: string;
   event: {

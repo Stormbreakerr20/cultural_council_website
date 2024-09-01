@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function Header() {
   const [currentPage, setCurrentPage] = useState("");
@@ -50,15 +51,19 @@ export default function Header() {
               Events
             </li>
           </Link>
-          <Link href={"/contact"}>
-            <li
-              className={`cursor-pointer transition hover:text-[#AC51D2] ${
-                currentPage === "/contact" ? "text-[#AC51D2]" : ""
-              }`}
-            >
-              Contact
-            </li>
-          </Link>
+          <li>
+            <SignedIn>
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
+            <SignedOut>
+              <Link
+                className={`cursor-pointer transition hover:text-[#AC51D2]`}
+                href="/sign-in"
+              >
+                Login
+              </Link>
+            </SignedOut>
+          </li>
         </ul>
       </div>
     </nav>

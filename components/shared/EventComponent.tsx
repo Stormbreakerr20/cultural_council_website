@@ -1,60 +1,124 @@
-import React from 'react';
+import React, { useState } from "react";
+import { IEvent } from "@/lib/database/models/event.model";
+import { formatDateTime } from "@/lib/utils";
+import { ClubsLogo } from "@/lib/utils";
+import Image from "next/image";
+import { DeleteConfirmation } from "./DeleteConfirmation";
+import Link from "next/link";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
-interface EventProps {
-  event: {
-    name: string;
-    description: string;
-    date: string;
-    time: string;
-    venue: string;
-    imageUrl: string;
-    registrationLink: string;
-    clubLogoUrl: string;
-  };
-}
+type CardProps = {
+  event: IEvent;
+  userId: string;
+};
 
-const EventComponent: React.FC<EventProps> = ({ event }) => {
+const truncateDescription = (
+  description: string | undefined,
+  wordLimit: number
+) => {
+  if (!description) return "";
+  const words = description.split(" ");
+  if (words.length <= wordLimit) return description;
+  return words.slice(0, wordLimit).join(" ") + "...";
+};
+
+const EventComponent = ({ event, userId }: CardProps) => {
+  const isEventCreator = userId === event.organizer._id.toString();
+  type ClubNames = keyof typeof ClubsLogo;
+
+  const clubName = event.organizer.clubName as ClubNames;
+  const clubLogo = ClubsLogo[clubName];
+
+  const [openDialog, setOpenDialog] = useState(false);
+
   return (
-    <div className="flex gap-4 mb-8 mx-20 ml-48 mr-32 ">
-      <div className="flex-shrink-0">
-        <img
-          src={event.imageUrl}
-          alt={event.name}
-          className="w-48 h-48 rounded-xl object-cover"
-        />
+    <div className="flex flex-col">
+      <div className="flex gap-4 mb-2 mx-20 ml-48 mr-32 justify-center items-center">
+        <div className="flex-shrink-0">
+          <img
+            src={event.imageUrl}
+            alt={event.title}
+            className="w-48 h-48 rounded-xl object-cover"
+          />
+        </div>
+        <div className="bg-purple-950 bg-opacity-35 p-4 border-2 border-white rounded-xl  flex-grow h-48 overflow-hidden relative">
+          <div className="flex justify-between items-end">
+            <h2 className="text-2xl font-semibold text-white">{event.title}</h2>
+            <img src={clubLogo} alt={clubName} className="h-8" />
+          </div>
+          <p className="text-neutral-400 mb-2">
+            {/* {truncateDescription(event.description, 10)} */}
+            {event.description && event.description.split(" ").length > 0 && (
+              <button
+                onClick={() => setOpenDialog(true)}
+                className="text-blue-400 mt-2 block"
+              >
+                About the Event
+              </button>
+            )}
+          </p>
+          <div className="text-blue-400 mb-2">
+            <a href={event.url} target="_blank" rel="noopener noreferrer">
+              Registration Form
+            </a>
+          </div>
+          <div className="flex justify-between text-neutral-500 text-sm">
+            <div className="flex gap-1 items-center justify-center">
+              <span role="img" aria-label="Calendar">
+                📅
+              </span>
+              {formatDateTime(event.startDateTime).dateOnly}
+            </div>
+            <div className="flex gap-1 items-center justify-center">
+              <span role="img" aria-label="Clock">
+                ⏰
+              </span>
+              {formatDateTime(event.startDateTime).timeOnly}
+            </div>
+            <div className="flex gap-1 items-center justify-center">
+              <span role="img" aria-label="Location">
+                📍
+              </span>
+              {event.venue}
+            </div>
+          </div>
+        </div>
       </div>
-      <div className=" bg-purple-950 bg-opacity-35 p-4 border-2 border-white rounded-xl flex-grow ">
-        <div className="flex justify-between items-start">
-          <h2 className="text-2xl font-semibold text-white">{event.name}</h2>
-          <img src={event.clubLogoUrl} alt="Club Logo" className="h-8" />
-        </div>
-        <p className="text-neutral-400 my-4">{event.description}</p>
-        <div className="text-blue-400 mb-4">
-          <a href={event.registrationLink} target="_blank" rel="noopener noreferrer">
-            Registration Form
-          </a>
-        </div>
-        <div className="flex justify-between text-neutral-500 text-sm">
-          <div>
-            <span role="img" aria-label="Calendar">
-              📅
-            </span>{' '}
-            {event.date}
+      <div className="flex mx-20 mr-32 justify-end mt-0 items-center">
+        {isEventCreator && (
+          <div className="flex gap-1">
+            <Link href={`/events/${event._id}/update`}>
+              <Image
+                src="/assets/icons/edit.svg"
+                alt="edit"
+                width={20}
+                height={20}
+              />
+            </Link>
+            <DeleteConfirmation eventId={event._id} />
           </div>
-          <div>
-            <span role="img" aria-label="Clock">
-              ⏰
-            </span>{' '}
-            {event.time}
-          </div>
-          <div>
-            <span role="img" aria-label="Location">
-              📍
-            </span>{' '}
-            {event.venue}
-          </div>
-        </div>
+        )}
       </div>
+
+      {/* Dialog for full description */}
+      <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+        <DialogTrigger asChild>
+          <button className="hidden" />
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{event.title}</DialogTitle>
+            <DialogDescription>{event.description}</DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

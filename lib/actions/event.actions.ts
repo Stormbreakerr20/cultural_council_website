@@ -23,20 +23,64 @@ const populateEvent = (query: any) => {
     select: "_id clubName",
   });
 };
-
+type Event = {
+  title: string;
+  description: string;
+  venue: string;
+  imageUrl: string;
+  startDateTime: Date;
+  endDateTime: Date;
+  url: string;
+};
+type EventParam = {
+  event: Event;
+  eventId?: string;
+};
+const isOverlapping = async ({ event, eventId }: EventParam) => {
+  const { startDateTime, endDateTime } = event;
+  const excludedId = eventId ? eventId : "";
+  const events = await Event.find({
+    $and: [
+      {
+        $or: [
+          { startDateTime: { $gte: startDateTime, $lt: endDateTime } },
+          { endDateTime: { $gt: startDateTime, $lte: endDateTime } },
+        ],
+      },
+      { _id: { $ne: excludedId } },
+    ],
+  });
+  console.log(events);
+  return {
+    isOverlap: events.length > 0,
+    OverlappingEvent: events.length > 0 ? events[0].title : null,
+  };
+};
 // CREATE
 export async function createEvent({ userId, event, path }: CreateEventParams) {
   try {
-    console.log(event);
     await connectToDatabase();
 
     const organizer = await User.findById(userId);
     if (!organizer) throw new Error("Organizer not found");
 
+    const Overlap = await isOverlapping({ event });
+
+    if (Overlap.isOverlap) {
+      return JSON.parse(
+        JSON.stringify({
+          message: "Event is overlapping",
+          OverlappingEvent: Overlap.OverlappingEvent,
+        })
+      );
+    }
+
     const newEvent = await Event.create({ ...event, organizer: userId });
     revalidatePath(path);
 
-    return JSON.parse(JSON.stringify(newEvent));
+    return JSON.parse(
+      JSON.stringify({ message: "success", newEvent: newEvent })
+    );
   } catch (error) {
     handleError(error);
   }
@@ -67,6 +111,16 @@ export async function updateEvent({ userId, event, path }: UpdateEventParams) {
       throw new Error("Unauthorized or event not found");
     }
 
+    const Overlap = await isOverlapping({ event, eventId: event._id });
+
+    if (Overlap.isOverlap) {
+      return JSON.parse(
+        JSON.stringify({
+          message: "Event is overlapping",
+          OverlappingEvent: Overlap.OverlappingEvent,
+        })
+      );
+    }
     const updatedEvent = await Event.findByIdAndUpdate(
       event._id,
       { ...event },
@@ -74,7 +128,7 @@ export async function updateEvent({ userId, event, path }: UpdateEventParams) {
     );
     revalidatePath(path);
 
-    return JSON.parse(JSON.stringify(updatedEvent));
+    return JSON.parse(JSON.stringify({ message: "success", updatedEvent }));
   } catch (error) {
     handleError(error);
   }

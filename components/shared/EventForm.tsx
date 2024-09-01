@@ -22,7 +22,7 @@ import { useState } from "react";
 import Image from "next/image";
 import DatePicker from "react-datepicker";
 import { useUploadThing } from "@/lib/uploadthing";
-
+import { toast } from "react-toastify";
 import "react-datepicker/dist/react-datepicker.css";
 import { Checkbox } from "../ui/checkbox";
 import { useRouter } from "next/navigation";
@@ -76,12 +76,18 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
           path: "/profile",
         });
 
-        if (newEvent) {
+        if (newEvent.message === "Event is overlapping") {
+          toast.error(`Event is overlapping with ${newEvent.OverlappingEvent}`);
+          return;
+        }
+        if (newEvent.message === "success") {
           form.reset();
-          router.push(`/events/${newEvent._id}`);
+          router.push(`/events`);
+          toast.success("Event created successfully");
         }
       } catch (error) {
         console.log(error);
+        toast.error("Failed to create event");
       }
     }
 
@@ -95,15 +101,23 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
         const updatedEvent = await updateEvent({
           userId,
           event: { ...values, imageUrl: uploadedImageUrl!, _id: eventId },
-          path: `/events/${eventId}`,
+          path: `/events`,
         });
 
-        if (updatedEvent) {
+        if (updatedEvent.message === "Event is overlapping") {
+          toast.error(
+            `Event is overlapping with ${updatedEvent.OverlappingEvent}`
+          );
+          return;
+        }
+        if (updatedEvent.message === "success") {
           form.reset();
-          router.push(`/events/${updatedEvent._id}`);
+          router.push(`/events`);
+          toast.success("Event updated successfully");
         }
       } catch (error) {
         console.log(error);
+        toast.error("Failed to update event");
       }
     }
   }
@@ -119,12 +133,12 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
             control={form.control}
             name="title"
             render={({ field }) => (
-              <FormItem className="w-full">
+              <FormItem className="w-full rounded-none">
                 <FormControl>
                   <Input
                     placeholder="Event title"
                     {...field}
-                    className="input-field"
+                    className="input-field text-black"
                   />
                 </FormControl>
                 <FormMessage />
@@ -141,9 +155,14 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
               <FormItem className="w-full">
                 <FormControl className="h-72">
                   <Textarea
+                    style={{
+                      outline: "none !important",
+                      border: "none !important",
+                      boxShadow: "none !important",
+                    }}
                     placeholder="Description"
                     {...field}
-                    className="textarea rounded-2xl"
+                    className="textarea rounded-2xl text-black"
                   />
                 </FormControl>
                 <FormMessage />
@@ -186,7 +205,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                     <Input
                       placeholder="Event venue or Online"
                       {...field}
-                      className="input-field"
+                      className="input-field text-black"
                     />
                   </div>
                 </FormControl>
@@ -221,6 +240,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                       timeInputLabel="Time:"
                       dateFormat="MM/dd/yyyy h:mm aa"
                       wrapperClassName="datePicker"
+                      className="text-black"
                     />
                   </div>
                 </FormControl>
@@ -253,6 +273,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                       timeInputLabel="Time:"
                       dateFormat="MM/dd/yyyy h:mm aa"
                       wrapperClassName="datePicker"
+                      className="text-black"
                     />
                   </div>
                 </FormControl>
@@ -278,9 +299,9 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                     />
 
                     <Input
-                      placeholder="URL"
+                      placeholder="Registration Form Link"
                       {...field}
-                      className="input-field"
+                      className="input-field text-black"
                     />
                   </div>
                 </FormControl>

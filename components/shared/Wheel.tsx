@@ -10,21 +10,12 @@ function App() {
     "designauts.jpeg",
     "designauts.jpeg",
   ];
-
   return (
-    <div className="relative h-screen w-screen">
-      {/* Circular Line */}
-      <div className="absolute  mr-40 mb-24 inset-0 flex items-center justify-center">
-        <div className="relative">
-          <div className="w-[800px] h-[850px] border-4  border-white rounded-full absolute"></div>
-        </div>
-      </div>
-
-      {/* Rotating Circles */}
+    <div className="">
       {ferrisOfTechs.map((tech, index: number) => {
         return (
           <motion.div
-            className="fixed overflow-hidden lg:right-[0] lg:-bottom-[50%] h-[120%] max-sm:h-[100%] max-lg:right-[40%] max-sm:right-[38%] max-lg:-bottom-[70%] max-sm:-bottom-[60%]"
+            className="fixed overflow-hidden lg:right-[0] lg:-bottom-[50%] h-[120%] max-sm:h-[100%] max-lg:right-[40%] max-sm:right-[38%] max-lg:-bottom-[70%] max-sm:-bottom-[65%]"
             key={index + 1}
             initial="initial"
             animate={["animate", "initialHide"]}
@@ -58,7 +49,7 @@ function App() {
             </div>
           </motion.div>
         );
-      })}
+      }, [])}
     </div>
   );
 }

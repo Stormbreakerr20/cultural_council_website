@@ -1,25 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import EventComponent from './EventComponent';
-import events from '@/data/events.json';
-import { motion } from 'framer-motion';
+"use client";
+import React, { useState, useEffect } from "react";
+import EventComponent from "./EventComponent";
+import { motion } from "framer-motion";
+import { getAllEvents } from "@/lib/actions/event.actions";
+import { IEvent } from "@/lib/database/models/event.model";
 
-const Timeline: React.FC = () => {
+type CardProps = {
+  event: IEvent;
+};
+
+export default function Timeline({ userId }: { userId: string }) {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [events, setEvents] = useState<IEvent[]>([]); // State to hold the fetched events
+
+  useEffect(() => {
+    // Asynchronous function to fetch events
+    const fetchEvents = async () => {
+      try {
+        const eventsData = await getAllEvents({
+          query: "",
+          page: 1,
+          limit: 6,
+        });
+        setEvents(eventsData?.data);
+      } catch (error) {
+        console.error("Failed to fetch events:", error);
+      }
+    };
+
+    fetchEvents();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const documentHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       const scrollFraction = scrollTop / documentHeight;
 
       setScrollPosition(scrollFraction);
     };
 
-    window.addEventListener('scroll', handleScroll);
-
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
   return (
     <div className="relative flex">
       {/* Vertical Timeline Bar on the Left */}
@@ -27,13 +51,15 @@ const Timeline: React.FC = () => {
         <div
           className="w-2 ml-32 rounded-full h-full absolute left-0"
           style={{
-            background: `linear-gradient(to bottom, #AC51D2 ${scrollPosition * 100}%, #6b7280 ${scrollPosition * 100}%)`,
+            background: `linear-gradient(to bottom, #AC51D2 ${
+              scrollPosition * 100
+            }%, #6b7280 ${scrollPosition * 100}%)`,
           }}
         ></div>
       </div>
 
       {/* Event Cards on the Right */}
-      <div className="ml-12 flex-grow">
+      <div className="flex-grow ml-3">
         {events.map((event, index) => (
           <motion.div
             key={index}
@@ -46,14 +72,12 @@ const Timeline: React.FC = () => {
             }}
             viewport={{ once: true, amount: 0.8 }}
           >
-            <div className="ml-8">
-              <EventComponent event={event} />
+            <div className="ml-3">
+              <EventComponent event={event} userId={userId} />
             </div>
           </motion.div>
         ))}
       </div>
     </div>
   );
-};
-
-export default Timeline;
+}
