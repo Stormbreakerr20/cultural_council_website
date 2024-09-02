@@ -49,7 +49,7 @@ export default function Timeline({ userId }: { userId: string }) {
       {/* Vertical Timeline Bar on the Left */}
       <div className="relative">
         <div
-          className="w-2 ml-32 rounded-full h-full absolute left-0"
+          className="w-2 ml-32 max-lg:ml-16 max-md:ml-8 rounded-full h-full absolute left-0"
           style={{
             background: `linear-gradient(to bottom, #AC51D2 ${
               scrollPosition * 100

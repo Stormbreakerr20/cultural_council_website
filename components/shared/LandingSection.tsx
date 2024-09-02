@@ -15,7 +15,7 @@ function LandingSection() {
         </div>
         <div className="mt-24 px-12 w-full max-w-screen-lg">
           <MainCarousel />
-          <TimelineMain />
+          {/* <TimelineMain /> */}
         </div>
       </div>
     </>

@@ -23,10 +23,10 @@ export default function Header() {
         ></Image>
       </Link>
       <div className="">
-        <ul className="flex justify-center gap-12 max-sm:gap-3 text-lg font-medium">
+        <ul className="flex justify-center gap-12 max-sm:text-base max-sm:gap-3 text-lg font-medium">
           <Link href={"/about"}>
             <li
-              className={`cursor-pointer transition hover:text-[#AC51D2] ${
+              className={`cursor-pointer transition  hover:text-[#AC51D2] ${
                 currentPage === "/about" ? "text-[#AC51D2]" : ""
               }`}
             >
@@ -35,7 +35,7 @@ export default function Header() {
           </Link>
           <Link href={"/clubs"}>
             <li
-              className={`cursor-pointer transition hover:text-[#AC51D2] ${
+              className={`cursor-pointer transition max-sm:text-base hover:text-[#AC51D2] ${
                 currentPage === "/clubs" ? "text-[#AC51D2]" : ""
               }`}
             >
@@ -44,11 +44,20 @@ export default function Header() {
           </Link>
           <Link href={"/events"}>
             <li
-              className={`cursor-pointer transition hover:text-[#AC51D2] ${
+              className={`cursor-pointer transition max-sm:text-base hover:text-[#AC51D2] ${
                 currentPage === "/events" ? "text-[#AC51D2]" : ""
               }`}
             >
               Events
+            </li>
+          </Link>
+          <Link href={"/core-team"}>
+            <li
+              className={`cursor-pointer transition max-sm:text-base hover:text-[#AC51D2] ${
+                currentPage === "/core-team" ? "text-[#AC51D2]" : ""
+              }`}
+            >
+              Team
             </li>
           </Link>
           <li>
@@ -57,7 +66,7 @@ export default function Header() {
             </SignedIn>
             <SignedOut>
               <Link
-                className={`cursor-pointer transition hover:text-[#AC51D2]`}
+                className={`cursor-pointer transition max-sm:text-base hover:text-[#AC51D2]`}
                 href="/sign-in"
               >
                 Login
