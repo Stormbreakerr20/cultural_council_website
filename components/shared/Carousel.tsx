@@ -11,11 +11,11 @@ const images = [
   "/assets/images/artgeeks.png",
   "/assets/images/pmc.jpg",
   "/assets/images/designauts.jpeg",
-  "/assets/images/gusthak.jpg",
+  "/assets/images/gustakh.jpg",
   "/assets/images/spic.jpg",
   "/assets/images/artgeeks.png",
   "/assets/images/music.jpg",
-  "/assets/images/patanni.jpg",
+  "/assets/images/udc.jpg",
 ];
 
 const Carousel: React.FC = () => {
@@ -70,9 +70,11 @@ const Carousel: React.FC = () => {
       <div className="absolute top-28 left-12 text-neutral-100 sm:w-[500px] max-sm:left-12 max-sm:top-28 max-sm:w-[300px] ">
         <h1 className="text-4xl sm:text-5xl font-semibold pb-2">Music Club</h1>
         <p className="text-sm sm:text-base">
-          This is just random text that you don’t need to read but is there just
-          for show because the designer liked putting random paragraphs
-          everywhere that make no sense at all. Hope you enjoy the show.
+          As one of the top-performing clubs within the Cultural Society of IIT
+          Mandi, the Music Club is dedicated to infuse melody into the
+          monotonous academic life of the students. They organize numerous
+          events, including open mics, musical nights, and more, ensuring that
+          the campus resonates with the sweet sounds of harmony.
         </p>
         <div className="flex my-2 gap-2.5 sm:gap-5 text-neutral-100/[0.5]">
           <FaRegArrowAltCircleLeft
