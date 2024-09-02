@@ -3,6 +3,7 @@ function page() {
   return (
     <>
       <Carousel />
+      
     </>
   );
 }
