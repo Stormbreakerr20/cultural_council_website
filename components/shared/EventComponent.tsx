@@ -45,7 +45,8 @@ const EventComponent = ({ event, userId }: CardProps) => {
     const checkAdmin = async () => {
       if (!userId) return;
       const user = await getUserById(userId);
-      if (user?.role === "admin") {
+      console.log(user);
+      if (user?.isAdmin) {
         setIsAdmin(true);
       }
     };
@@ -58,7 +59,7 @@ const EventComponent = ({ event, userId }: CardProps) => {
     updateWordLimit();
     window.addEventListener("resize", updateWordLimit);
     return () => window.removeEventListener("resize", updateWordLimit);
-  }, [userId]);
+  }, []);
   return (
     <div className="flex flex-col ml-20 max-md:ml-4 max-sm:ml-0">
       <div className="flex gap-4 mb-2 mx-32 max-lg:mx-8 justify-center max-md:mr-5 items-center">
