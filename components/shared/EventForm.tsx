@@ -73,7 +73,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
         const newEvent = await createEvent({
           event: { ...values, imageUrl: uploadedImageUrl! },
           userId,
-          path: "/events",
+          path: "/profile",
         });
 
         if (newEvent.message === "Event is overlapping") {
@@ -101,7 +101,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
         const updatedEvent = await updateEvent({
           userId,
           event: { ...values, imageUrl: uploadedImageUrl!, _id: eventId },
-          path: "/events",
+          path: `/events`,
         });
 
         if (updatedEvent.message === "Event is overlapping") {
@@ -114,7 +114,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
           form.reset();
           router.push(`/events`);
           toast.success("Event updated successfully");
-        } 
+        }
       } catch (error) {
         console.log(error);
         toast.error("Failed to update event");
