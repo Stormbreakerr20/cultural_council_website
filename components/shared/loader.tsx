@@ -2,17 +2,16 @@ import React from 'react';
 import Lottie from 'lottie-react';
 import animationData from '@/public/assets/loader.json';
 
-const loader: React.FC = () => {
+const Preloader: React.FC = () => {
   return (
-    <div>
-      <h1>Your Component with Lottie Animation</h1>
+    <div className="flex items-center justify-center h-screen">
       <Lottie 
         animationData={animationData} 
         loop={true} 
-        style={{ height: 300, width: 300 }} // You can adjust the size as needed
+        style={{ height: 300, width: 300 }} // Adjust the size as needed
       />
     </div>
   );
 };
 
-export default loader;
+export default Preloader;
