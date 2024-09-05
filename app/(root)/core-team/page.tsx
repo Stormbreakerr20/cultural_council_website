@@ -1,3 +1,4 @@
+import { Linkedin } from "lucide-react";
 import React from "react";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 
@@ -30,6 +31,13 @@ const TeamSection = () => {
       image: '/assets/cc_core/Vivek_Aggarwal_Cultural_Secretary.jpg',
       instagram: "vivekaggarwal05",
       linkedin: "https://www.linkedin.com/in/vivek-aggarwal-b005b125a",
+    },
+    {
+      name: "Aryan Singh",
+      role: "Member", 
+      image: '/assets/cc_core/Aryan_singh.jpg',
+      instagram: "skd.arya18",
+      linkedin: "https://www.linkedin.com/in/aryan0singh/",
     },
     {
       name: "Aritra Boral",
@@ -128,71 +136,87 @@ const TeamSection = () => {
   ];
   const PastSecretaries = [
     
+    [
       {
           "name": "Aarya Suthar",
           "Tenure": "2023-2024",
-          "image": "/assets/img/Aarya_Priteshkumar_Suthar.JPG"
+          "image": "/assets/img/Aarya_Priteshkumar_Suthar.JPG",
+          "linkedin": "https://www.linkedin.com/in/aaryasuthar/"
       },
       {
           "name": "Kanak Dubey",
           "Tenure": "2022-2023",
-          "image": "/assets/img/Kanak_Dubey.jpg"
+          "image": "/assets/img/Kanak_Dubey.jpg",
+          "linkedin": "https://www.linkedin.com/in/kanak-dubey-0587a6218/"
       },
       {
           "name": "Shivani Pandey",
           "Tenure": "2021-2022",
-          "image": "/assets/img/Shivani_pandey.jpg"
+          "image": "/assets/img/Shivani_pandey.jpg",
+          "linkedin": "https://www.linkedin.com/in/shivani-pandey-1520/"
       },
       {
           "name": "Tushar Tyagi",
           "Tenure": "2020-2021",
-          "image": "/assets/img/tushar_tyagi.jpg"
+          "image": "/assets/img/tushar_tyagi.jpg",
+          "linkedin": "https://www.linkedin.com/in/tushartyagi01/"
       },
       {
           "name": "Rishabh Dharmani",
           "Tenure": "2019-2020",
-          "image": "/assets/img/Rishabh.jpg"
+          "image": "/assets/img/Rishabh.jpg",
+          "linkedin": "https://www.linkedin.com/in/rishabh-dharmani/"
       },
       {
-          "name": "Kanikaram Sai Sandeep",
+          "name": "K. Sai Sandeep",
           "Tenure": "2017-2018",
-          "image": "/assets/img/sai_sandeep.jpg"
+          "image": "/assets/img/sai_sandeep.jpg",
+          "linkedin": "https://www.linkedin.com/in/sai-sandeep-kanikaram-94439716a/"
       },
       {
           "name": "Nitesh Bansiwal",
           "Tenure": "2016-2017",
-          "image": "/assets/img/nitesh.jpg"
+          "image": "/assets/img/nitesh.jpg",
+          "linkedin": "https://www.linkedin.com/in/nitesh-bansiwal/"
       },
       {
           "name": "Kisna Mahajan",
           "Tenure": "2015-2016",
-          "image": "/assets/img/kisna_mahajan.jpg"
+          "image": "/assets/img/kisna_mahajan.jpg",
+          "linkedin": "https://www.instagram.com/culturals.iitmandi/"
       },
       {
           "name": "Harika Garimella",
           "Tenure": "2014-2015",
-          "image": "/assets/img/harika.jpg"
+          "image": "/assets/img/harika.jpg",
+          "linkedin": "https://www.linkedin.com/in/harika-g-46aa9083?"
       },
       {
           "name": "Akash Pathak",
           "Tenure": "2013-2014",
-          "image": "/assets/img/akash.jpg"
+          "image": "/assets/img/akash.jpg",
+          "linkedin": "https://www.instagram.com/culturals.iitmandi/"
       },
       {
           "name": "Eshaan Aggarwal",
           "Tenure": "2012-2013",
-          "image": "/assets/img/eshaan.jpg"
+          "image": "/assets/img/eshaan.jpg",
+          "linkedin": "https://www.linkedin.com/in/eainmaking/"
       },
       {
           "name": "Ankur Nahar",
           "Tenure": "2011-2012",
-          "image": "/assets/img/ankur_nahar.jpg"
+          "image": "/assets/img/ankur_nahar.jpg",
+          "linkedin": "https://www.linkedin.com/in/ankurnahar?"
       },
       {
           "name": "Priyank Patel",
           "Tenure": "2010-2011",
-          "image": "/assets/img/prayank_patel.jpeg"
-      },
+          "image": "/assets/img/prayank_patel.jpeg",
+          "linkedin": "https://www.linkedin.com/in/priyank-patel-5408371b?"
+      }
+  ]
+  
   
   ];
   const culturalSecretaryAndAdvisor = teamMembers.filter(
@@ -249,7 +273,6 @@ const TeamSection = () => {
 
       <h2 className="text-4xl font-semibold text-center mb-20">CORE TEAM</h2>
       <div className="flex flex-wrap justify-center">
-        
         {otherMembers.map((member, index) => (
           <div key={index} className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-20 flex justify-center">
             <div className="bg-none border border-white rounded-lg shadow-lg p-8 transition-all duration-800 hover:bg-gradient-to-r text-gray-400 from-purple-600 to-purple-400 hover:text-white cursor-pointer">
@@ -281,28 +304,40 @@ const TeamSection = () => {
         ))}
       </div>
 
-      {/* Past Secretaries Section */}
-      <div className="mt-10">
-        <h2 className="text-4xl font-semibold text-center mb-20 ">PAST SECRETARIES</h2>
-        <div className="flex flex-wrap justify-center">
-          {PastSecretaries.map((secretary, index) => (
-            <div key={index} className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-20 flex justify-center">
-              <div className="bg-none border border-white rounded-lg shadow-lg p-8 transition-all duration-800 hover:bg-gradient-to-r text-gray-400 from-purple-600 to-purple-400 hover:text-white cursor-pointer">
-                <div className="w-40 h-40 bg-purple-200 p-2 rounded-full mx-auto mb-6 overflow-hidden transform hover:scale-110 transition-all duration-800">
-                  <img
-                    src={secretary.image}
-                    alt={secretary.name}
-                    className="w-full h-full object-cover rounded-full"
-                  />
-                </div>
-                <h3 className="text-xl text-center font-semibold">{secretary.name}</h3>
-                <p className="uppercase text-center tracking-widest text-sm font-light">
-                  {secretary.Tenure}
-                </p>
+      <h2 className="text-4xl font-semibold text-center mb-20">PAST SECRETARIES</h2>
+      <div className="flex flex-wrap justify-center">
+        {PastSecretaries[0].map((secretary, index) => (
+          <div key={index} className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-20 flex justify-center">
+            <div className="bg-none border border-white rounded-lg shadow-lg p-8 transition-all duration-800 hover:bg-gradient-to-r text-gray-400 from-purple-600 to-purple-400 hover:text-white cursor-pointer">
+              <div className="w-40 h-40 bg-purple-200 p-2 rounded-full mx-auto mb-6 overflow-hidden transform hover:scale-110 transition-all duration-800">
+                <img
+                  src={secretary.image}
+                  alt={secretary.name}
+                  className="w-full h-full object-cover rounded-full"
+                />
+              </div>
+              <h3 className="text-xl text-center font-semibold">{secretary.name}</h3>
+              <p className="uppercase text-center tracking-widest text-sm font-light">
+                Tenure: {secretary.Tenure}
+              </p>
+              <div className="flex justify-center mt-4 space-x-4">
+                {secretary.linkedin && (
+                  <a href={secretary.linkedin} className="text-xl hover:text-purple-200">
+                    <FaLinkedin />
+                  </a>
+
+                  
+                )}
+             
+                  <a href="https://www.instagram.com/culturals.iitmandi/" className="text-xl hover:text-purple-200">
+                    <FaInstagram />
+                  </a>
+               
+                
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );
