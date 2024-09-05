@@ -14,7 +14,7 @@ const Page = () => {
           This is the Cultural Society, IIT Mandi
         </div>
         <h1 className="text-6xl max-w-screen-md font-semibold text-center leading-tight">
-          Our events
+          Our Events
         </h1>
         <SignedIn>
           <Link href={"/events/create"}>

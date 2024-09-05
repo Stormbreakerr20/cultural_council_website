@@ -12,7 +12,7 @@ function LandingSection() {
             Where raw talent meets global exposure
           </h1>
         </div>
-        <div className="mt-24 px-12 w-full max-w-screen-lg">
+        <div className="mt-24 px-12 w-full max-w-screen-lg mb-20">
           <MainCarousel />
         </div>
       </div>

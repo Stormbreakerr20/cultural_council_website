@@ -3,14 +3,14 @@ import Wheel from "@/components/shared/Wheel";
 
 const page = () => {
   return (
-    <div className="flex justify-start lg:items-center max-lg:mt-24 h-full">
+    <div className="flex justify-start lg:items-center max-lg:mt-24 h-full mt-24 mb-20">
       <div className="w-full lg:w-1/2 ml-12 sm:ml-24 p-4 lg:p-0 max-md:ml-0 max-md:text-center">
         <div className=" mb-8">
           <p className="text-lg lg:text-xl">
             This is the Cultural Society, IIT Mandi
           </p>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold">
-            About the council
+            About The Council
           </h1>
         </div>
         <p className="text-sm md:text-base lg:text-lg">
@@ -27,7 +27,7 @@ const page = () => {
         </p>
       </div>
 
-      <Wheel />
+      {/* <Wheel /> */}
     </div>
   );
 };

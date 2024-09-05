@@ -1,7 +1,6 @@
 import React from "react";
-import ClipLoader from "react-spinners/ClipLoader";
 import Lottie from "lottie-react";
-import animationData from '@/public/assets/loader.json';
+import animationData from "@/public/assets/loader.json";
 
 const override = {
   display: "block",
@@ -17,13 +16,16 @@ const Loading = ({ loading }: LoadingProps) => {
     <div>
       {loading && (
         <>
-
           <Lottie
             animationData={animationData}
             loop={true}
-            style={{ height: 150, width: 150, margin: "50px auto", display: "block" }}
+            style={{
+              height: 150,
+              width: 150,
+              margin: "50px auto",
+              display: "block",
+            }}
           />
-
         </>
       )}
     </div>

@@ -233,7 +233,7 @@ const TeamSection = () => {
         <div className="mt-32 sm:mt-48 text-xl font-medium text-neutral-100/[0.7] text-center">
           This is the Cultural Society, IIT Mandi
         </div>
-        <h1 className="text-6xl max-w-screen-md font-semibold text-center leading-tight">
+        <h1 className="text-6xl max-w-screen-md font-semibold text-center leading-tight max-sm:text-5xl max-sm:mt-3">
           Cultural Council
         </h1>
       </div>

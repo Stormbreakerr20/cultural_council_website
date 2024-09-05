@@ -3,11 +3,12 @@
 import { Footer } from "flowbite-react";
 import { FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { MdEmail, MdPhone } from 'react-icons/md';
+import { IoIosMail } from "react-icons/io";
 
 const Foot = () => {
   return (
     <div>
-      <Footer container className="relative bg-violet-950 bg-opacity-10 shadow-lg mt-20 p-10">
+      <Footer container className="relative bg-violet-950 bg-opacity-10 shadow-lg p-8">
       
         <div className="absolute opacity-70 inset-0 backdrop-filter backdrop-blur-sm"></div> {/* Adding a blurred backdrop */}
       
@@ -39,11 +40,11 @@ const Foot = () => {
 
             <div className="space-y-2">
               <a href="mailto:cultural_secretary@students.iitmandi.ac.in" className="flex items-center space-x-2 text-neutral-100/[0.4] hover:text-white transition-all duration-200">
-                <MdEmail className="h-4"/>
+                <IoIosMail />
                 <span>cultural_secretary@students.iitmandi.ac.in</span>
               </a>
               <a href="tel:+917417899100" className="flex items-center space-x-2 text-neutral-100/[0.4] hover:text-white transition-all duration-200">
-                <MdPhone className="h-4" />
+                <MdPhone />
                 <span>Phone: +91 7417899100</span>
               </a>
             </div>
