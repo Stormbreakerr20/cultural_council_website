@@ -20,15 +20,17 @@ const Foot = () => {
             <div className="flex items-center space-x-4 mb-4">
               <img
                 src="/assets/images/CCLogo.png"
-                alt="Logo 1"
+                alt="Cultural Council Logo"
                 className="h-14"
               />
               <div className="border-l-2 border-gray-400 h-12 mx-4"></div>
+              <a href="https://www.iitmandi.ac.in/">
               <img
                 src="/assets/images/IIT_logo.png"
-                alt="Logo 2"
+                alt="IIT Mandi Logo"
                 className="h-16"
               />
+              </a>
             </div>
             <p className="text-neutral-100/[0.4]">
               The Cultural Council of IIT Mandi is dedicated to promoting
